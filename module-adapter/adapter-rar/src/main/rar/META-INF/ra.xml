@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<connector xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/connector_1_7.xsd"
+           version="1.7">
+    <description>Telegram Resource Adapter</description>
+    <display-name>Telegram Resource Adapter</display-name>
+    <eis-type>Telegram Resource Adapter</eis-type>
+    <resourceadapter-version>1.0</resourceadapter-version>
+    <license>
+        <license-required>false</license-required>
+    </license>
+    <resourceadapter>
+        <resourceadapter-class>ir.moke.jca.adapter.TelegramResourceAdapter</resourceadapter-class>
+        <outbound-resourceadapter>
+            <connection-definition>
+                <managedconnectionfactory-class>ir.moke.jca.adapter.TelegramManagedConnectionFactory</managedconnectionfactory-class>
+                <connectionfactory-interface>ir.moke.jca.api.TelegramConnectionFactory</connectionfactory-interface>
+                <connectionfactory-impl-class>ir.moke.jca.adapter.TelegramConnectionFactoryImpl</connectionfactory-impl-class>
+                <connection-interface>ir.moke.jca.api.TelegramConnection</connection-interface>
+                <connection-impl-class>ir.moke.jca.adapter.TelegramConnectionImpl</connection-impl-class>
+            </connection-definition>
+            <transaction-support>NoTransaction</transaction-support>
+            <reauthentication-support>false</reauthentication-support>
+        </outbound-resourceadapter>
+        <inbound-resourceadapter>
+            <messageadapter>
+                <messagelistener>
+                    <messagelistener-type>ir.moke.jca.api.TelegramBotListener</messagelistener-type>
+                    <activationspec>
+                        <activationspec-class>ir.moke.jca.adapter.TelegramActivationSpec</activationspec-class>
+                    </activationspec>
+                </messagelistener>
+            </messageadapter>
+        </inbound-resourceadapter>
+    </resourceadapter>
+</connector>
