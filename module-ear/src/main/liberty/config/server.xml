@@ -34,7 +34,7 @@
         <!--
            Use activation config name and token instead @MessageDriven -> activationConfig
         -->
-<!--        <properties.jca-application.jca-resourceAdapter name="roboexchange_bot" token="6256782154:AAG8hGQB_JDMoqKVwKPq5KKs7VKhrWDK-VE"/>-->
+<!--        <properties.jca-application.jca-resourceAdapter name="Bot name" token="Bot token"/>-->
     </activationSpec>
 
     <connectionFactory jndiName="jca/Sender">

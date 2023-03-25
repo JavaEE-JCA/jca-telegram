@@ -19,7 +19,7 @@
 
     <groupId>ir.moke.jca</groupId>
     <artifactId>jca-telegram</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <organization>
         <name>Moke</name>
         <url>http://www.moke.ir</url>
