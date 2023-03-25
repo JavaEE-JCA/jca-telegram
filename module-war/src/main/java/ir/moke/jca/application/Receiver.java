@@ -19,15 +19,15 @@ import ir.moke.jca.api.TelegramConnection;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import javax.ejb.ActivationConfigProperty;
-import javax.ejb.MessageDriven;
-import javax.inject.Inject;
+import jakarta.ejb.ActivationConfigProperty;
+import jakarta.ejb.MessageDriven;
+import jakarta.inject.Inject;
 
 @MessageDriven(
         name = "TelegramBotListener",
         activationConfig = {
-                @ActivationConfigProperty(propertyName = "name", propertyValue = "Enter Bot Name"),
-                @ActivationConfigProperty(propertyName = "token", propertyValue = "Enter Bot Token")
+                @ActivationConfigProperty(propertyName = "name", propertyValue = "roboexchange_bot"),
+                @ActivationConfigProperty(propertyName = "token", propertyValue = "AAEH4Oh84xJOxli0roUy3fMGSftJu3CLNvY")
         }
 )
 public class Receiver implements TelegramBotListener {

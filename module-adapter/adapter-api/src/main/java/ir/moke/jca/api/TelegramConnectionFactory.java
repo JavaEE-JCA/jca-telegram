@@ -13,11 +13,11 @@
  */
 package ir.moke.jca.api;
 
-import javax.resource.Referenceable;
-import javax.resource.ResourceException;
+import jakarta.resource.Referenceable;
+import jakarta.resource.ResourceException;
 import java.io.Serializable;
 
 public interface TelegramConnectionFactory extends Serializable, Referenceable {
-    public TelegramConnection getConnection() throws ResourceException;
+    TelegramConnection getConnection() throws ResourceException;
 
 }

@@ -13,14 +13,14 @@
  */
 package ir.moke.jca.adapter;
 
+import jakarta.resource.spi.ActivationSpec;
+import jakarta.resource.spi.BootstrapContext;
+import jakarta.resource.spi.Connector;
+import jakarta.resource.spi.ResourceAdapter;
+import jakarta.resource.spi.endpoint.MessageEndpointFactory;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import javax.resource.spi.ActivationSpec;
-import javax.resource.spi.BootstrapContext;
-import javax.resource.spi.Connector;
-import javax.resource.spi.ResourceAdapter;
-import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.transaction.xa.XAResource;
 
 @Connector

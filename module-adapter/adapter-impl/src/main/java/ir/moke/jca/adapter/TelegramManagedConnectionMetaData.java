@@ -15,9 +15,9 @@ package ir.moke.jca.adapter;
 
 import java.util.logging.Logger;
 
-import javax.resource.ResourceException;
+import jakarta.resource.ResourceException;
 
-import javax.resource.spi.ManagedConnectionMetaData;
+import jakarta.resource.spi.ManagedConnectionMetaData;
 
 public class TelegramManagedConnectionMetaData implements ManagedConnectionMetaData {
 

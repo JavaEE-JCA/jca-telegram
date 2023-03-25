@@ -4,10 +4,10 @@ Sample JavaEE 8 jca resource adapter for learning/testing jca connection factory
 
 #### build and run :     
 **TomEE 8**     
-`mvn clean compile install ; (cd ear-module/ ; mvn tomee:run)`
+`mvn clean compile install ; (cd module-ear/ ; mvn tomee:run)`
 
 **Liberty/OpenLiberty**     
-`mvn clean compile install ; (cd ear-module/ ; mvn liberty:run)`
+`mvn clean compile install ; (cd module-ear/ ; mvn liberty:run)`
 
 ***test :***
 ```java

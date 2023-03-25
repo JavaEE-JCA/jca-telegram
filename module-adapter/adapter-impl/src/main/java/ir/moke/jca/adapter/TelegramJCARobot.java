@@ -1,12 +1,9 @@
 package ir.moke.jca.adapter;
 
 import ir.moke.jca.api.TelegramBotListener;
+import jakarta.resource.spi.endpoint.MessageEndpoint;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-
-import javax.resource.spi.endpoint.MessageEndpoint;
 
 public class TelegramJCARobot extends TelegramLongPollingBot {
 

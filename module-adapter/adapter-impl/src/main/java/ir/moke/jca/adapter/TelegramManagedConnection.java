@@ -16,9 +16,9 @@ package ir.moke.jca.adapter;
 import ir.moke.jca.api.TelegramConnection;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
-import javax.resource.NotSupportedException;
-import javax.resource.ResourceException;
-import javax.resource.spi.*;
+import jakarta.resource.NotSupportedException;
+import jakarta.resource.ResourceException;
+import jakarta.resource.spi.*;
 import javax.security.auth.Subject;
 import javax.transaction.xa.XAResource;
 import java.io.PrintWriter;

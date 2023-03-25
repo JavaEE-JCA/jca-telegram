@@ -18,8 +18,8 @@ import ir.moke.jca.api.TelegramConnectionFactory;
 
 import javax.naming.NamingException;
 import javax.naming.Reference;
-import javax.resource.ResourceException;
-import javax.resource.spi.ConnectionManager;
+import jakarta.resource.ResourceException;
+import jakarta.resource.spi.ConnectionManager;
 import java.util.logging.Logger;
 
 public class TelegramConnectionFactoryImpl implements TelegramConnectionFactory {

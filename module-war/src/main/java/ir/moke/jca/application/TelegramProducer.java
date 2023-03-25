@@ -2,12 +2,12 @@ package ir.moke.jca.application;
 
 import ir.moke.jca.api.TelegramConnection;
 import ir.moke.jca.api.TelegramConnectionFactory;
+import jakarta.ejb.Singleton;
+import jakarta.enterprise.inject.Produces;
+import jakarta.enterprise.inject.spi.InjectionPoint;
+import jakarta.resource.ResourceException;
 
 import javax.annotation.Resource;
-import javax.ejb.Singleton;
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
-import javax.resource.ResourceException;
 
 @Singleton
 public class TelegramProducer {
