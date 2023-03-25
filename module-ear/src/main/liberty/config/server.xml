@@ -31,6 +31,10 @@
 
     <activationSpec id="jca-application/jca-web/TelegramBotListener">
         <properties.jca-application.jca-resourceAdapter/>
+        <!--
+           Use activation config name and token instead @MessageDriven -> activationConfig
+        -->
+<!--        <properties.jca-application.jca-resourceAdapter name="roboexchange_bot" token="6256782154:AAG8hGQB_JDMoqKVwKPq5KKs7VKhrWDK-VE"/>-->
     </activationSpec>
 
     <connectionFactory jndiName="jca/Sender">
@@ -43,5 +47,4 @@
         <httpOptions http2="enabled"/>
     </httpEndpoint>
     <webContainer disableXPoweredBy="true"/>
-    <applicationManager autoExpand="true"/>
 </server>

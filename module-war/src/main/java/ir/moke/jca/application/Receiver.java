@@ -16,18 +16,17 @@ package ir.moke.jca.application;
 
 import ir.moke.jca.api.TelegramBotListener;
 import ir.moke.jca.api.TelegramConnection;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Update;
-
 import jakarta.ejb.ActivationConfigProperty;
 import jakarta.ejb.MessageDriven;
 import jakarta.inject.Inject;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Update;
 
 @MessageDriven(
         name = "TelegramBotListener",
         activationConfig = {
-                @ActivationConfigProperty(propertyName = "name", propertyValue = "roboexchange_bot"),
-                @ActivationConfigProperty(propertyName = "token", propertyValue = "AAEH4Oh84xJOxli0roUy3fMGSftJu3CLNvY")
+                @ActivationConfigProperty(propertyName = "name", propertyValue = "Bot name"),
+                @ActivationConfigProperty(propertyName = "token", propertyValue = "Bot token")
         }
 )
 public class Receiver implements TelegramBotListener {
@@ -42,12 +41,8 @@ public class Receiver implements TelegramBotListener {
         if ((parts[0]).startsWith("/")) {
             String command = parts[0];
             switch (command) {
-                case "/list":
-                    System.out.println("Hey, I receive 'list' command");
-                    break;
-                case "/help":
-                    System.out.println("Please enter /list");
-                    break;
+                case "/list" -> System.out.println("Hey, I receive 'list' command");
+                case "/help" -> System.out.println("Please enter /list");
             }
         }
 

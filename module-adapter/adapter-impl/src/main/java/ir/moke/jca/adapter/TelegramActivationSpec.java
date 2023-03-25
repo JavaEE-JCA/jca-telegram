@@ -25,7 +25,7 @@ import jakarta.resource.spi.ResourceAdapter;
 public class TelegramActivationSpec implements ActivationSpec {
 
     private ResourceAdapter resourceAdapter;
-    private Class beanClass;
+    private Class<?> beanClass;
     private String token;
     private String name;
 
@@ -35,11 +35,11 @@ public class TelegramActivationSpec implements ActivationSpec {
         System.out.println("+------------------------------+");
     }
 
-    public Class getBeanClass() {
+    public Class<?> getBeanClass() {
         return beanClass;
     }
 
-    public void setBeanClass(Class beanClass) {
+    public void setBeanClass(Class<?> beanClass) {
         this.beanClass = beanClass;
     }
 

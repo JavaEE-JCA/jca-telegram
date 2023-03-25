@@ -36,12 +36,12 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>adapter-api</artifactId>
             <version>${project.version}</version>
-<!--            <scope>provided</scope>-->
+            <!--            <scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
-            <version>5.0.1.1</version>
+            <version>6.5.0</version>
             <type>jar</type>
         </dependency>
     </dependencies>
