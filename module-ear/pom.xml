@@ -72,7 +72,7 @@
                         <rarModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>telegram-adapter-rar</artifactId>
-                            <uri>/telegram-resourceAdapter.rar</uri>
+                            <uri>/telegram-adapter-rar-1.0.rar</uri>
                         </rarModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>

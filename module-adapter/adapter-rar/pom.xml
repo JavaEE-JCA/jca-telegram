@@ -33,13 +33,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>ir.moke.jca</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>telegram-adapter-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>telegram-resourceAdapter</finalName>
-    </build>
 </project>
