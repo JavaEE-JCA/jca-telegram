@@ -19,30 +19,28 @@
 
     <parent>
         <groupId>ir.moke.jca</groupId>
-        <artifactId>module-adapter</artifactId>
+        <artifactId>telegram-module-adapter</artifactId>
         <version>1.0</version>
     </parent>
 
-    <artifactId>adapter-impl</artifactId>
+    <artifactId>telegram-adapter-impl</artifactId>
     <packaging>jar</packaging>
     <name>Moke :: Telegram Bot :: EAR :: Connector Impl</name>
+
+    <properties>
+        <maven.deploy.skip>false</maven.deploy.skip>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>adapter-api</artifactId>
+            <artifactId>telegram-adapter-api</artifactId>
             <version>${project.version}</version>
-            <!--            <scope>provided</scope>-->
-        </dependency>
-        <dependency>
-            <groupId>org.telegram</groupId>
-            <artifactId>telegrambots</artifactId>
-            <version>6.5.0</version>
-            <type>jar</type>
         </dependency>
     </dependencies>
 </project>

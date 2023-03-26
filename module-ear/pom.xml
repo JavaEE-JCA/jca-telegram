@@ -27,10 +27,14 @@
     <packaging>ear</packaging>
     <name>Moke :: Telegram Bot :: EAR Packaging</name>
 
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>ir.moke.jca</groupId>
-            <artifactId>adapter-rar</artifactId>
+            <artifactId>telegram-adapter-rar</artifactId>
             <version>1.0</version>
             <type>rar</type>
         </dependency>
@@ -42,7 +46,7 @@
         </dependency>
         <dependency>
             <groupId>ir.moke.jca</groupId>
-            <artifactId>adapter-api</artifactId>
+            <artifactId>telegram-adapter-api</artifactId>
             <version>1.0</version>
             <type>jar</type>
         </dependency>
@@ -62,13 +66,13 @@
                     <modules>
                         <jarModule>
                             <groupId>ir.moke.jca</groupId>
-                            <artifactId>adapter-api</artifactId>
+                            <artifactId>telegram-adapter-api</artifactId>
                             <includeInApplicationXml>true</includeInApplicationXml>
                         </jarModule>
                         <rarModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>adapter-rar</artifactId>
-                            <uri>/jca-resourceAdapter.rar</uri>
+                            <artifactId>telegram-adapter-rar</artifactId>
+                            <uri>/telegram-resourceAdapter.rar</uri>
                         </rarModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>

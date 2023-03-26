@@ -30,15 +30,15 @@
     </featureManager>
 
     <activationSpec id="jca-application/jca-web/TelegramBotListener">
-        <properties.jca-application.jca-resourceAdapter/>
+        <properties.jca-application.telegram-resourceAdapter/>
         <!--
            Use activation config name and token instead @MessageDriven -> activationConfig
         -->
-<!--        <properties.jca-application.jca-resourceAdapter name="Bot name" token="Bot token"/>-->
+<!--        <properties.jca-application.telegram-resourceAdapter name="Bot name" token="Bot token"/>-->
     </activationSpec>
 
     <connectionFactory jndiName="jca/Sender">
-        <properties.jca-application.jca-resourceAdapter/>
+        <properties.jca-application.telegram-resourceAdapter/>
     </connectionFactory>
 
     <basicRegistry id="basic" realm="BasicRealm"/>
