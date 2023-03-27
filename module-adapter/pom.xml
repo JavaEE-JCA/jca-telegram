@@ -22,9 +22,12 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
+
+    <name>Moke :: Telegram Bot :: RAR</name>
+
     <artifactId>telegram-module-adapter</artifactId>
     <packaging>pom</packaging>
-    <name>Moke :: Telegram Bot :: RAR</name>
+    <version>1.0.1</version>
 
     <properties>
         <maven.deploy.skip>false</maven.deploy.skip>

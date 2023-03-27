@@ -20,13 +20,15 @@
     <parent>
         <groupId>ir.moke.jca</groupId>
         <artifactId>telegram-module-adapter</artifactId>
-        <version>1.0</version>
+        <version>1.0.1</version>
     </parent>
+
+    <name>Moke :: Telegram Bot :: EAR :: Connector Impl</name>
 
     <artifactId>telegram-adapter-impl</artifactId>
     <packaging>jar</packaging>
-    <name>Moke :: Telegram Bot :: EAR :: Connector Impl</name>
-
+    <version>1.0.1</version>
+    
     <properties>
         <maven.deploy.skip>false</maven.deploy.skip>
     </properties>
