@@ -37,6 +37,7 @@ public class Receiver implements TelegramBotListener {
     @Override
     public void onReceive(Update update) {
         String text = update.getMessage().getText();
+        System.out.println("Receive message " + text);
         String[] parts = text.split(" ");
         if ((parts[0]).startsWith("/")) {
             String command = parts[0];
