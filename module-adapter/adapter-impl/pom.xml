@@ -27,7 +27,7 @@
 
     <artifactId>telegram-adapter-impl</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     
     <properties>
         <maven.deploy.skip>false</maven.deploy.skip>

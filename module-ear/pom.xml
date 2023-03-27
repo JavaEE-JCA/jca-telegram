@@ -35,7 +35,7 @@
         <dependency>
             <groupId>ir.moke.jca</groupId>
             <artifactId>telegram-adapter-rar</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
             <type>rar</type>
         </dependency>
         <dependency>
