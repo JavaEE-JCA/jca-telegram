@@ -37,6 +37,16 @@ public class TelegramActivationSpec implements ActivationSpec {
         System.out.println("+------------------------------+");
         System.out.println("|    TelegramActivationSpec    |");
         System.out.println("+------------------------------+");
+
+        String config = """
+                    Token: %s
+                    Name: %s
+                    Use proxy: %s
+                    Proxy type: %s
+                    Proxy host: %s
+                    Proxy port: %s           
+                """;
+        System.out.println(config);
     }
 
     public Class<?> getBeanClass() {
