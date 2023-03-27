@@ -24,8 +24,8 @@
     </parent>
 
     <artifactId>telegram-adapter-rar</artifactId>
-    <packaging>rar</packaging>
     <name>Moke :: Telegram Bot :: EAR :: RAR Packaging</name>
+    <packaging>rar</packaging>
 
     <properties>
         <maven.deploy.skip>false</maven.deploy.skip>
@@ -38,4 +38,14 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-rar-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
