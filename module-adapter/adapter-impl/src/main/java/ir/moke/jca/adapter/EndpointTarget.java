@@ -15,14 +15,19 @@ package ir.moke.jca.adapter;
 
 import jakarta.resource.spi.endpoint.MessageEndpoint;
 import jakarta.resource.spi.endpoint.MessageEndpointFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class EndpointTarget extends Thread {
+    private static final Logger logger = LoggerFactory.getLogger(EndpointTarget.class);
     private final MessageEndpointFactory messageEndpointFactory;
     private MessageEndpoint messageEndpoint;
     private final TelegramActivationSpec spec;
     private TelegramJCARobot telegramJCARobot;
+    private static final DefaultBotOptions botOptions = new DefaultBotOptions();
 
     public EndpointTarget(MessageEndpointFactory messageEndpointFactory, TelegramActivationSpec spec) {
         this.messageEndpointFactory = messageEndpointFactory;
@@ -31,12 +36,29 @@ public class EndpointTarget extends Thread {
 
     private void createEndpoint() {
         try {
+            logger.info("Create telegram jca endpoint");
             messageEndpoint = messageEndpointFactory.createEndpoint(null);
 
             String token = spec.getToken();
             String botName = spec.getName();
 
-            telegramJCARobot = new TelegramJCARobot(token, botName, messageEndpoint);
+            boolean useProxy = spec.isUseProxy();
+            if (useProxy) {
+                DefaultBotOptions.ProxyType proxyType = (spec.getProxyType() != null || !spec.getProxyType().isEmpty()) ? DefaultBotOptions.ProxyType.valueOf(spec.getProxyType()) : DefaultBotOptions.ProxyType.SOCKS5;
+                logger.info(String.format("Telegram configured to use %s proxy", proxyType));
+
+                String proxyHost = spec.getProxyHost();
+                Integer proxyPort = spec.getProxyPort();
+                if (proxyHost == null || proxyHost.isEmpty() || proxyPort == null || proxyPort <= 0) {
+                    logger.error(String.format("Invalid proxy connection parameters host:%s port%s", proxyHost, proxyPort));
+                } else {
+                    botOptions.setProxyType(proxyType);
+                    botOptions.setProxyHost(proxyHost);
+                    botOptions.setProxyPort(proxyPort);
+                }
+            }
+
+            telegramJCARobot = new TelegramJCARobot(botOptions,token, botName, messageEndpoint);
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             telegramBotsApi.registerBot(telegramJCARobot);
         } catch (Exception e) {

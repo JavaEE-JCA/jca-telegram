@@ -2,6 +2,7 @@ package ir.moke.jca.adapter;
 
 import ir.moke.jca.api.TelegramBotListener;
 import jakarta.resource.spi.endpoint.MessageEndpoint;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -11,10 +12,8 @@ public class TelegramJCARobot extends TelegramLongPollingBot {
     private final String botName;
     private final MessageEndpoint messageEndpoint;
 
-    public TelegramJCARobot(String token, String botName, MessageEndpoint messageEndpoint) {
-        System.out.println("+--------------------------------+");
-        System.out.println("|    Telegram JCA Bot Started    |");
-        System.out.println("+--------------------------------+");
+    public TelegramJCARobot(DefaultBotOptions options, String token, String botName, MessageEndpoint messageEndpoint) {
+        super(options, token);
         this.token = token;
         this.botName = botName;
         this.messageEndpoint = messageEndpoint;

@@ -14,7 +14,6 @@
 package ir.moke.jca.adapter;
 
 import ir.moke.jca.api.TelegramBotListener;
-
 import jakarta.resource.ResourceException;
 import jakarta.resource.spi.Activation;
 import jakarta.resource.spi.ActivationSpec;
@@ -28,6 +27,11 @@ public class TelegramActivationSpec implements ActivationSpec {
     private Class<?> beanClass;
     private String token;
     private String name;
+
+    private boolean useProxy = false;
+    private String proxyType;
+    private String proxyHost;
+    private Integer proxyPort;
 
     public TelegramActivationSpec() {
         System.out.println("+------------------------------+");
@@ -57,6 +61,38 @@ public class TelegramActivationSpec implements ActivationSpec {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isUseProxy() {
+        return useProxy;
+    }
+
+    public void setUseProxy(boolean useProxy) {
+        this.useProxy = useProxy;
+    }
+
+    public String getProxyType() {
+        return proxyType;
+    }
+
+    public void setProxyType(String proxyType) {
+        this.proxyType = proxyType;
+    }
+
+    public String getProxyHost() {
+        return proxyHost;
+    }
+
+    public void setProxyHost(String proxyHost) {
+        this.proxyHost = proxyHost;
+    }
+
+    public Integer getProxyPort() {
+        return proxyPort;
+    }
+
+    public void setProxyPort(Integer proxyPort) {
+        this.proxyPort = proxyPort;
     }
 
     @Override
