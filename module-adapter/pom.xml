@@ -15,27 +15,129 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>ir.moke.jca</groupId>
-        <artifactId>jca-telegram</artifactId>
-        <version>1.0</version>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Moke :: Telegram Bot :: RAR</name>
-
+    <groupId>ir.moke.jca</groupId>
     <artifactId>telegram-module-adapter</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
-    <properties>
-        <maven.deploy.skip>false</maven.deploy.skip>
-    </properties>
+    <organization>
+        <name>Moke</name>
+        <url>http://www.moke.ir</url>
+    </organization>
+
+    <name>Moke :: Resource Adapter :: Telegram</name>
+    <description>JakartaEE resource inbound and outbound adapter for communicate telegram messenger</description>
+    <url>https://github.com/JavaEE-JCA/jca-telegram</url>
 
     <modules>
         <module>adapter-api</module>
         <module>adapter-impl</module>
         <module>adapter-rar</module>
     </modules>
+
+    <build>
+        <plugins>
+            <!-- Java compiler  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+
+            <!-- JavaDoc plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <doclint>all,-missing</doclint>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- source plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- deploy plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+
+            <!-- GPG plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/JavaEE-JCA/jca-telegram.git</connection>
+        <developerConnection>scm:git:git@github.com:JavaEE-JCA/jca-telegram.git</developerConnection>
+        <url>https://github.com/JavaEE-JCA/jca-telegram</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Mahdi Sheikh Hosseini</name>
+            <email>mahsom@gmail.com</email>
+            <organization>ir.moke</organization>
+            <organizationUrl>http://www.moke.ir</organizationUrl>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
