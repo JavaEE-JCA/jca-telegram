@@ -13,6 +13,7 @@
  */
 package ir.moke.jca.adapter;
 
+import ir.moke.jca.api.TMessage;
 import ir.moke.jca.api.TelegramConnection;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
@@ -121,8 +122,8 @@ public class TelegramManagedConnection implements ManagedConnection {
         return new TelegramManagedConnectionMetaData();
     }
 
-    void sendMessage(SendMessage sendMessage) {
+    void sendMessage(final TMessage message) {
         final TelegramResourceAdapter resourceAdapter = (TelegramResourceAdapter) mcf.getResourceAdapter();
-        resourceAdapter.sendMessage(sendMessage);
+        resourceAdapter.sendMessage(message);
     }
 }

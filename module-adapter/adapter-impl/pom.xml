@@ -28,7 +28,7 @@
     <artifactId>telegram-adapter-impl</artifactId>
     <packaging>jar</packaging>
     <version>1.0.4</version>
-    
+
     <properties>
         <maven.deploy.skip>false</maven.deploy.skip>
     </properties>
@@ -44,6 +44,11 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>telegram-adapter-api</artifactId>
             <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots</artifactId>
+            <version>6.5.0</version>
         </dependency>
     </dependencies>
 </project>

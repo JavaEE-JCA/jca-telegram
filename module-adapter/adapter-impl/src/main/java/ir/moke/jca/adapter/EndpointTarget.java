@@ -13,57 +13,25 @@
  */
 package ir.moke.jca.adapter;
 
+import ir.moke.jca.api.TelegramBotListener;
 import jakarta.resource.spi.endpoint.MessageEndpoint;
 import jakarta.resource.spi.endpoint.MessageEndpointFactory;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class EndpointTarget extends Thread {
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(EndpointTarget.class);
+    private static final Logger logger = LoggerFactory.getLogger(EndpointTarget.class);
     private final MessageEndpointFactory messageEndpointFactory;
-    private MessageEndpoint messageEndpoint;
-    private final TelegramActivationSpec spec;
-    private TelegramJCARobot telegramJCARobot;
-    private static final DefaultBotOptions botOptions = new DefaultBotOptions();
+    private final TelegramJCARobot telegramJCARobot;
+    private TelegramBotsApi telegramBotsApi;
 
-    public EndpointTarget(MessageEndpointFactory messageEndpointFactory, TelegramActivationSpec spec) {
-        this.messageEndpointFactory = messageEndpointFactory;
-        this.spec = spec;
-    }
-
-    private void createEndpoint() {
+    public EndpointTarget(TelegramResourceAdapter resourceAdapter) {
+        this.messageEndpointFactory = resourceAdapter.getMessageEndpointFactory();
+        this.telegramJCARobot = resourceAdapter.getTelegramJCARobot();
         try {
-            logger.info("Create telegram jca endpoint");
-            messageEndpoint = messageEndpointFactory.createEndpoint(null);
-
-            String token = spec.getToken();
-            String botName = spec.getName();
-            boolean useProxy = spec.isUseProxy();
-            String proxyTypeStr = spec.getProxyType();
-            String proxyHost = spec.getProxyHost();
-            Integer proxyPort = spec.getProxyPort();
-
-            logger.info("Telegram name:" + botName + " token:" + token);
-            logger.info("Telegram proxy use:" + useProxy + " type:" + proxyTypeStr + " host:" + proxyHost + " port:" + proxyPort);
-
-            if (useProxy) {
-                DefaultBotOptions.ProxyType proxyType = (proxyTypeStr != null && !proxyTypeStr.isEmpty()) ? DefaultBotOptions.ProxyType.valueOf(proxyTypeStr) : DefaultBotOptions.ProxyType.SOCKS5;
-                logger.info(String.format("Telegram configured to use %s proxy", proxyType));
-
-                if (proxyHost == null || proxyHost.isEmpty() || proxyPort == null || proxyPort <= 0) {
-                    logger.error(String.format("Invalid proxy connection parameters host:%s port%s", proxyHost, proxyPort));
-                } else {
-                    botOptions.setProxyType(proxyType);
-                    botOptions.setProxyHost(proxyHost);
-                    botOptions.setProxyPort(proxyPort);
-                }
-            }
-
-            telegramJCARobot = new TelegramJCARobot(botOptions, token, botName, messageEndpoint);
-            TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-            telegramBotsApi.registerBot(telegramJCARobot);
+            this.telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,18 +39,12 @@ public class EndpointTarget extends Thread {
 
     @Override
     public void run() {
-        /*
-         * Liberty does not allow create endpoint during resourceAdapter activation .
-         * so need to create this on another thread .
-         * */
-        createEndpoint();
-    }
-
-    public MessageEndpoint getMessageEndpoint() {
-        return messageEndpoint;
-    }
-
-    public TelegramJCARobot getTelegramJCARobot() {
-        return telegramJCARobot;
+        try {
+            MessageEndpoint messageEndpoint = messageEndpointFactory.createEndpoint(null);
+            this.telegramJCARobot.setListener((TelegramBotListener) messageEndpoint);
+            telegramBotsApi.registerBot(telegramJCARobot);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

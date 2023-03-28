@@ -14,8 +14,6 @@
 
 package ir.moke.jca.api;
 
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-
 public interface TelegramConnection {
-    void sendMessage(final SendMessage sendMessage);
+    void sendMessage(final TMessage tMessage);
 }

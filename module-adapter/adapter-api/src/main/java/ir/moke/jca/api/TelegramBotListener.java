@@ -14,8 +14,6 @@
 package ir.moke.jca.api;
 
 
-import org.telegram.telegrambots.meta.api.objects.Update;
-
 public interface TelegramBotListener {
-    void onReceive(final Update update);
+    void onReceive(final TMessage message);
 }

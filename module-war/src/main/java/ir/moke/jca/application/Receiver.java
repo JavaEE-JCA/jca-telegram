@@ -14,13 +14,13 @@
 package ir.moke.jca.application;
 
 
+import ir.moke.jca.api.TMessage;
 import ir.moke.jca.api.TelegramBotListener;
 import ir.moke.jca.api.TelegramConnection;
 import jakarta.ejb.ActivationConfigProperty;
 import jakarta.ejb.MessageDriven;
 import jakarta.inject.Inject;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Update;
+
 
 @MessageDriven(
         name = "TelegramBotListener",
@@ -35,8 +35,9 @@ public class Receiver implements TelegramBotListener {
     private TelegramConnection telegramConnection;
 
     @Override
-    public void onReceive(Update update) {
-        String text = update.getMessage().getText();
+    public void onReceive(TMessage message) {
+        String text = message.text();
+        String chatId = message.chatId();
         System.out.println("Receive message " + text);
         String[] parts = text.split(" ");
         if ((parts[0]).startsWith("/")) {
@@ -47,9 +48,7 @@ public class Receiver implements TelegramBotListener {
             }
         }
 
-        SendMessage message = new SendMessage();
-        message.setChatId(String.valueOf(update.getMessage().getChatId()));
-        message.setText("Hello !!!");
-        telegramConnection.sendMessage(message);
+        System.out.println(chatId);
+        telegramConnection.sendMessage(new TMessage("receive: " + text + " from: " + chatId, chatId));
     }
 }
