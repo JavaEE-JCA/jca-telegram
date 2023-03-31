@@ -20,7 +20,7 @@
     <groupId>ir.moke.jca</groupId>
     <artifactId>telegram-module-adapter</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2</version>
+    <version>1.1</version>
 
     <organization>
         <name>Moke</name>
