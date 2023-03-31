@@ -14,6 +14,8 @@
 package ir.moke.jca.api;
 
 
+import ir.moke.jca.api.model.TextMessage;
+
 public interface TelegramBotListener {
-    void onReceive(final TMessage message);
+    void onReceive(final TextMessage message);
 }

@@ -14,6 +14,8 @@
 
 package ir.moke.jca.api;
 
+import ir.moke.jca.api.model.TMessage;
+
 public interface TelegramConnection {
-    void sendMessage(final TMessage tMessage);
+    void sendMessage(TMessage tMessage);
 }

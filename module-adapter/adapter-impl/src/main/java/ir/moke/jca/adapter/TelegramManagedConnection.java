@@ -13,9 +13,9 @@
  */
 package ir.moke.jca.adapter;
 
-import ir.moke.jca.api.TMessage;
+import ir.moke.jca.api.model.TMessage;
+import ir.moke.jca.api.model.TextMessage;
 import ir.moke.jca.api.TelegramConnection;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import jakarta.resource.NotSupportedException;
 import jakarta.resource.ResourceException;
@@ -122,8 +122,8 @@ public class TelegramManagedConnection implements ManagedConnection {
         return new TelegramManagedConnectionMetaData();
     }
 
-    void sendMessage(final TMessage message) {
+    void sendMessage(TMessage tMessage) {
         final TelegramResourceAdapter resourceAdapter = (TelegramResourceAdapter) mcf.getResourceAdapter();
-        resourceAdapter.sendMessage(message);
+        resourceAdapter.sendMessage(tMessage);
     }
 }

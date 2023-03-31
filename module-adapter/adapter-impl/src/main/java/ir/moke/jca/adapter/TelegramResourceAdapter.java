@@ -13,7 +13,7 @@
  */
 package ir.moke.jca.adapter;
 
-import ir.moke.jca.api.TMessage;
+import ir.moke.jca.api.model.TMessage;
 import jakarta.resource.spi.ActivationSpec;
 import jakarta.resource.spi.BootstrapContext;
 import jakarta.resource.spi.Connector;
@@ -22,8 +22,6 @@ import jakarta.resource.spi.endpoint.MessageEndpointFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import javax.transaction.xa.XAResource;
 
@@ -89,15 +87,8 @@ public class TelegramResourceAdapter implements ResourceAdapter {
         return new XAResource[0];
     }
 
-    public void sendMessage(final TMessage message) {
-        try {
-            SendMessage send = new SendMessage();
-            send.setChatId(message.chatId());
-            send.setText(message.text());
-            telegramJCARobot.execute(send);
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
-        }
+    public void sendMessage(TMessage tMessage) {
+        TelegramMessageProducer.sendMessage(telegramJCARobot, tMessage);
     }
 
     public TelegramJCARobot getTelegramJCARobot() {

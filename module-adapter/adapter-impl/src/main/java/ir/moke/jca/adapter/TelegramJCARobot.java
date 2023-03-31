@@ -1,6 +1,6 @@
 package ir.moke.jca.adapter;
 
-import ir.moke.jca.api.TMessage;
+import ir.moke.jca.api.model.TextMessage;
 import ir.moke.jca.api.TelegramBotListener;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -28,7 +28,7 @@ public class TelegramJCARobot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage()) {
-            listener.onReceive(new TMessage(update.getMessage().getText(), String.valueOf(update.getMessage().getChatId())));
+            listener.onReceive(new TextMessage(update.getMessage().getText(), String.valueOf(update.getMessage().getChatId())));
         }
     }
 }

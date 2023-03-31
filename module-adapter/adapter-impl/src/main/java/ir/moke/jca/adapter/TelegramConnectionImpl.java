@@ -13,9 +13,9 @@
  */
 package ir.moke.jca.adapter;
 
-import ir.moke.jca.api.TMessage;
+import ir.moke.jca.api.model.TMessage;
+import ir.moke.jca.api.model.TextMessage;
 import ir.moke.jca.api.TelegramConnection;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.util.logging.Logger;
 
@@ -36,7 +36,7 @@ public class TelegramConnectionImpl implements TelegramConnection {
     }
 
     @Override
-    public void sendMessage(final TMessage message) {
-        mc.sendMessage(message);
+    public void sendMessage(TMessage tMessage) {
+        mc.sendMessage(tMessage);
     }
 }

@@ -14,7 +14,7 @@
 package ir.moke.jca.application;
 
 
-import ir.moke.jca.api.TMessage;
+import ir.moke.jca.api.model.TextMessage;
 import ir.moke.jca.api.TelegramBotListener;
 import ir.moke.jca.api.TelegramConnection;
 import jakarta.ejb.ActivationConfigProperty;
@@ -35,7 +35,7 @@ public class Receiver implements TelegramBotListener {
     private TelegramConnection telegramConnection;
 
     @Override
-    public void onReceive(TMessage message) {
+    public void onReceive(TextMessage message) {
         String text = message.text();
         String chatId = message.chatId();
         System.out.println("Receive message " + text);
@@ -49,6 +49,6 @@ public class Receiver implements TelegramBotListener {
         }
 
         System.out.println(chatId);
-        telegramConnection.sendMessage(new TMessage("receive: " + text + " from: " + chatId, chatId));
+        telegramConnection.sendMessage(new TextMessage("receive: " + text + " from: " + chatId, chatId));
     }
 }
