@@ -40,7 +40,27 @@ public class Receiver implements TelegramBotListener {
         telegramConnection.sendMessage(new TextMessage("receive: " + text + " from: " + chatId, chatId));
     }
 }
-```  
+```   
+
+***Maven :***
+```xml
+<dependency>
+    <groupId>ir.moke.jca</groupId>
+    <artifactId>telegram-adapter-api</artifactId>
+    <version>1.1</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+**and rar archive:**   
+```xml
+<dependency>
+    <groupId>ir.moke.jca</groupId>
+    <artifactId>telegram-adapter-rar</artifactId>
+    <version>1.1</version>
+    <type>rar</type>
+</dependency>
+```
 
 ***Activation config properties :***    
 |Parameter | description                         
