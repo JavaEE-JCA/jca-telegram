@@ -13,13 +13,12 @@
  */
 package ir.moke.jca.adapter;
 
-import ir.moke.jca.api.model.TMessage;
-import ir.moke.jca.api.model.TextMessage;
 import ir.moke.jca.api.TelegramConnection;
-
+import ir.moke.jca.api.model.TMessage;
 import jakarta.resource.NotSupportedException;
 import jakarta.resource.ResourceException;
 import jakarta.resource.spi.*;
+
 import javax.security.auth.Subject;
 import javax.transaction.xa.XAResource;
 import java.io.PrintWriter;

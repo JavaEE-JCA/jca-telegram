@@ -13,9 +13,8 @@
  */
 package ir.moke.jca.adapter;
 
-import ir.moke.jca.api.model.TMessage;
-import ir.moke.jca.api.model.TextMessage;
 import ir.moke.jca.api.TelegramConnection;
+import ir.moke.jca.api.model.TMessage;
 
 import java.util.logging.Logger;
 
